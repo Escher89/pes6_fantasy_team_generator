@@ -46,8 +46,7 @@ def cwp():
 
     HEIGHT, WEIGHT, bmi = height_weight(mu,sigma,height_min,height_max,bmi_mu)
 
-    ### SUB SKILLS ###
-    
+    ### SUB SKILLS ### 
     def strength():
         x = bmi - 10 * (5/3)
         y = random.triangular(10,25,20)
@@ -60,7 +59,6 @@ def cwp():
         return fac    
 
     ### SKILLS ###
-
     def attack_01():
         from player.skill_01_attack import skill_role_cwp, skill_pos
         x = int(factor() * 5 + ((skill_role_cwp[player_role] + skill_pos[position]) / 2))
@@ -255,6 +253,7 @@ def cwp():
     WEAK_FOOT_ACCURACY = str(0)
     WEAK_FOOT_FREQUENCY = str(0)
     
+    ### ABILITYS ###
     DRIBBLING = str(0)
     TACTICAL_DRIBBLE = str(0)
     POSITIONING = str(0)
@@ -278,12 +277,16 @@ def cwp():
     PENALTY_STOPPER = str(0)
     ONE_ON_ONE_STOPPER = str(0)
     LONG_THROW = str(0)
+    
+    ### MOVEMENT ###
     GOAL_CELEBRATION_1 = str(0)
     GOAL_CELEBRATION_2 = str(0)
     DRIBBLE = str(0)
     FREE_KICK = str(0)
     PENALTY = str(0)
     DROP = str(0)
+    
+    ### APPEARANCE ###
     SKIN_COLOR = str(0)
     FACE_TYPE = str(0)
     PRESET_FACE_NUMBER = str(0)
@@ -300,6 +303,8 @@ def cwp():
     LEG_LENGTH = str(0)
     WRISTBAND = str(0)
     WRISTBAND_COLOR = str(0)
+    
+    ### TEAM & NUMBERS ###
     INTERNATIONAL_NUMBER = str(0)
     CLASSIC_NUMBER = str(0)
     CLUB_TEAM = str(0)
