@@ -11,4 +11,4 @@ def height_weight(mu,sigma,min,max,bmi_mu):
         bmi = random.normalvariate(bmi_mu,1)
         weight = int(bmi*((height/100)*(height/100)))
         #print("Weight: ",weight) 
-        return [height, weight]
+        return [height, weight, bmi]

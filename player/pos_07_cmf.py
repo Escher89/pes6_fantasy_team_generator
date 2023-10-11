@@ -164,7 +164,7 @@ def cmf():
     WF = "0"
     SS = "0"
     CF = "0"
-    HEIGHT, WEIGHT = height_weight(mu,sigma,height_min,height_max,bmi_mu)
+    HEIGHT, WEIGHT, bmi = height_weight(mu,sigma,height_min,height_max,bmi_mu)
     FAV_SIDE, FOOT = center_side_foot()
     CONSISTENCY = str(0)
     CONDITION = str(0)
