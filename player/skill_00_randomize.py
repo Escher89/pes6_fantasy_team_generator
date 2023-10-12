@@ -3,24 +3,27 @@ import random
 def overall():
     from team import overall_mu, overall_sigma
     overall = random.normalvariate(overall_mu,overall_sigma)
+    x = overall / 100 + 0.8
     #print("Overall: ",overall)
-    return overall
+    return x
 
 def starting_eleven_bonus():
     from team import main_team_list
     if len(main_team_list) > 0:
-        s_e_b = random.triangular(0,2,1)
+        s_e_b = 1.0
     else:
-        s_e_b = 0.0
+        s_e_b = random.triangular(0.5, 1.0, 0.75)
     return s_e_b
 
 def age_factor(age):
-    lst_16to28 = [-2,-1.805,-1.615,-1.43,-1.25,-1.075,-0.905,-0.74,-0.58,-0.425,-0.275,-0.13,0]
-    lst_29to40 = [-0.135,-0.285,-0.44,-0.6-0.765,-0,935,-1.11,-1.29,-1.475,-1.665,-1.86,-2.06]
+    lst_16to28 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+    lst_29to40 = [12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
     if age < 29:
         a_f = lst_16to28[age - 16]
+        a = 0.2/13 * a_f + 0.8 
     else:
         a_f = lst_29to40[age - 29]
-    return a_f
+        a = 0.2/13 * a_f + 0.8
+    return a
 
 starting_eleven_bonus()

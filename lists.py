@@ -26,7 +26,7 @@ sub_roles_smf = ["wide midflieder", "winger", "defensive winger", "wide playmake
 sub_roles_amf = ["offensive midfielder", "advanced playmaker", "trequatista", "enganche", "shadow striker"]
 sub_roles_fw = ["winger","advanced playmaker", "inside forward", "trequatista", "wide target man", "raumdeuter", "inverted winger"]
 sub_roles_ss = ["deep lying forward", "pressing forward", "trequatista", "false nine"]
-sub_roles_cf = ["advanced forward", "target man", "poacher", "complete forward"]
+sub_roles_cf = ["advanced forward", "target man", "poacher", "complete forward", "advanced forward", "target man", "poacher", "complete forward"]
 
 sub_sb_side_list = ["L", "R", "B"]
 sub_wb_side_list = ["L", "R", "B"]

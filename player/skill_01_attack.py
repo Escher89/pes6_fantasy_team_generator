@@ -1,9 +1,9 @@
-skill_pos = {"gk": 20, "cwp": 40, "cb": 35, "sb": 42, "dmf": 42, "wb": 44, "cmf": 44, "smf": 46, "amf": 46, "fw": 48, "ss": 48, "cf": 50}
+skill_pos = {"gk": 40, "cwp": 75, "cb": 60, "sb": 75, "dmf": 80, "wb": 80, "cmf": 85, "smf": 85, "amf": 90, "fw": 90, "ss": 95, "cf": 99}
 
-skill_role_gk = {"goalkeeper": 20,
-                 "sweeper keeper" : 30}
+skill_role_gk = {"goalkeeper": 40,
+                 "sweeper keeper" : 60}
 
-skill_role_cwp = {"sweeper": 40}
+skill_role_cwp = {"sweeper": 75}
 
 skill_role_cb = {"center back" : 0,
                  "ball playing center back" : 0,

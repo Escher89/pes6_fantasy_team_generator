@@ -54,16 +54,25 @@ def cwp():
         return z
     
     def factor():
-        from player.skill_00_randomize import overall, starting_eleven_bonus, age_factor
-        fac = overall() + starting_eleven_bonus() + age_factor(AGE)
-        return fac    
+        from player.skill_00_randomize import overall, starting_eleven_bonus
+        fac = (overall() + starting_eleven_bonus()) / 2
+        return fac
+    fac = factor()
+    print(fac)
+    
+    def age_factor():
+        from player.skill_00_randomize import age_factor
+        return age_factor(AGE)
+    age_fac = age_factor()
+    print(age_fac)
 
     ### SKILLS ###
     def attack_01():
         from player.skill_01_attack import skill_role_cwp, skill_pos
-        x = int(factor() * 5 + ((skill_role_cwp[player_role] + skill_pos[position]) / 2))
+        x = int(fac * ((skill_role_cwp[player_role] + skill_pos[position]) / 2))
         return x
-    ATTACK = attack_01()
+    ATTACK_noAge = attack_01()
+    ATTACK = int(ATTACK_noAge * age_fac)
     
     def defence_02():
         from player.skill_02_defence import skill_role_cwp, skill_pos
