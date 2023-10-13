@@ -25,3 +25,48 @@ def nat_name():
                 player_name_str = ''.join(player_name)
 
         return [nat_index, player_name_str, player_nat]
+
+def shirt_name(name):
+    if len(name) <= 4:
+        split = list(name)
+        split.insert(1," ")
+        split.insert(1," ")
+        split.insert(1," ")
+        split.insert(5," ")
+        split.insert(5," ")
+        split.insert(5," ")
+        split.insert(9," ")
+        split.insert(9," ")
+        split.insert(9," ")
+        x = ''.join(split)
+    elif len(name) == 5:
+        split = list(name)
+        split.insert(1," ")
+        split.insert(1," ")
+        split.insert(4," ")
+        split.insert(4," ")
+        split.insert(7," ")
+        split.insert(7," ")
+        split.insert(10," ")
+        split.insert(10," ")
+        x = ''.join(split)
+    elif len(name) == 6:
+        split = list(name)
+        split.insert(1," ")
+        split.insert(3," ")
+        split.insert(5," ")
+        split.insert(7," ")
+        split.insert(9," ")
+        x = ''.join(split)
+    elif len(name) == 7:
+        split = list(name)
+        split.insert(1," ")
+        split.insert(3," ")
+        split.insert(5," ")
+        split.insert(7," ")
+        split.insert(9," ")
+        split.insert(11," ")
+        x = ''.join(split)
+    else:
+        x = name
+    return x

@@ -3,7 +3,7 @@ import random
 def dmf():
     
     ### NAME AND NATIONALITY ###
-    from player.nat_name import nat_name
+    from player.nat_name import nat_name, shirt_name
 
     def number():
         from lists import shirt_nr
@@ -102,7 +102,7 @@ def dmf():
     ID = ID_func()
     CALLNAME = "0"
     NATIONALITY, NAME, PLAYER_NAT = nat_name()
-    SHIRT_NAME = NAME.upper()
+    SHIRT_NAME = shirt_name(NAME)
     AGE = age(age_mu,age_sigma)
     POS_DEFAULT = "5"
     GK = "0"
@@ -206,7 +206,7 @@ def dmf():
     print("Position: DMF   #",CLUB_NUMBER)
     print(f"Name: {NAME} ({PLAYER_NAT}) [{NATIONALITY}]")
     print("Role: ",player_role)
-    print(f"Height: {float(HEIGHT)/100.0} m")
+    print(f"Height: {float(HEIGHT)/100.0:.2f} m")
     print(f"Weight: {WEIGHT} kg")
     print("Age: ",AGE)
     print(f"Foot: {FOOT}    Side: {FAV_SIDE}")
