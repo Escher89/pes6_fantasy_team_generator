@@ -2,7 +2,7 @@ import random
 #import csv
 
 print()
-print("_-PES 6 Fantasy Team Genarator-_")
+print("_-PES 6 Fantasy Team Generator-_")
 print()
 
 player_qt = random.randint(25,30)

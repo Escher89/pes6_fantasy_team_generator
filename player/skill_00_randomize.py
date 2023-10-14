@@ -26,4 +26,12 @@ def age_factor(age):
         a = 0.2/13 * a_f + 0.8
     return a
 
-starting_eleven_bonus()
+def strength(bmi):
+    x = bmi - 20
+    y = random.triangular(1, 8, 6)
+    z = (x + y) / 10
+    return z
+
+def technique():
+    x = random.triangular(1, 8, 6)
+    return x

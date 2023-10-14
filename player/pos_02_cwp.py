@@ -47,11 +47,8 @@ def cwp():
     HEIGHT, WEIGHT, bmi = height_weight(mu,sigma,height_min,height_max,bmi_mu)
 
     ### SUB SKILLS ### 
-    def strength():
-        x = bmi - 10 * (5/3)
-        y = random.triangular(10,25,20)
-        z = (x + y) / 2
-        return z
+    from player.skill_00_randomize import strength
+    str_fac = strength(bmi)
     
     def factor():
         from player.skill_00_randomize import overall, starting_eleven_bonus
@@ -76,15 +73,17 @@ def cwp():
     
     def defence_02():
         from player.skill_02_defence import skill_role_cwp, skill_pos
-        x = int(factor() * 5 + ((skill_role_cwp[player_role] + skill_pos[position]) / 2)) 
+        x = int(fac * ((skill_role_cwp[player_role] + skill_pos[position]) / 2))
         return x
-    DEFENCE = defence_02()
+    DEFENCE_noAge = defence_02()
+    DEFENCE = int(DEFENCE_noAge * age_fac)
 
     def balance_03():
         from player.skill_03_balance import skill_role_cwp, skill_pos
-        x = int((factor() * 2.5 + strength()) + ((skill_role_cwp[player_role] + skill_pos[position]) / 2))
+        x = int(((fac + str_fac) / 2) * ((skill_role_cwp[player_role] + skill_pos[position]) / 2))
         return x
-    BALANCE = balance_03()
+    BALANCE_noAge = balance_03()
+    BALANCE = int(BALANCE_noAge * age_fac)
     
     def stamina_04():
         from player.skill_04_stamina import skill_role_cwp, skill_pos
