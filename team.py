@@ -17,7 +17,7 @@ overall_sigma = 2
 foreign_ratio =  5 #input("Input foreigner ratio 1 to ")
 
 for team_nat in nat_list:
-    team_nat = "Germany" #input("Country: ")
+    team_nat = "Netherlands" #input("Country: ")
     if team_nat in nat_list:
         break
     
