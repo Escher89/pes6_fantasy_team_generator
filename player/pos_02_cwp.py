@@ -47,21 +47,20 @@ def cwp():
     HEIGHT, WEIGHT, bmi = height_weight(mu,sigma,height_min,height_max,bmi_mu)
 
     ### SUB SKILLS ### 
-    from player.skill_00_randomize import strength
+    from player.skill_00_randomize import strength, technique
     str_fac = strength(bmi)
+    tec_fac = technique()
     
     def factor():
         from player.skill_00_randomize import overall, starting_eleven_bonus
         fac = (overall() + starting_eleven_bonus()) / 2
         return fac
     fac = factor()
-    print(fac)
     
     def age_factor():
         from player.skill_00_randomize import age_factor
         return age_factor(AGE)
     age_fac = age_factor()
-    print(age_fac)
 
     ### SKILLS ###
     def attack_01():

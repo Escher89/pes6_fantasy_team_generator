@@ -33,5 +33,5 @@ def strength(bmi):
     return z
 
 def technique():
-    x = random.triangular(1, 8, 6)
+    x = random.triangular(50, 85, 99) / 100
     return x
