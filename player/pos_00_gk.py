@@ -1,7 +1,7 @@
 import random
 
 def gk():
-    
+    position = "gk"
     ### NAME AND NATIONALITY ###
     from player.nat_name import nat_name, shirt_name
 
@@ -27,6 +27,8 @@ def gk():
     else:
         age_mu = 27
         age_sigma = 5
+    
+    AGE = age(age_mu,age_sigma)
 
     def role():
         from team import cwp, main_team_list
@@ -54,7 +56,185 @@ def gk():
     height_min = 180
     height_max = 202
     bmi_mu = 23.5
-        
+
+    HEIGHT, WEIGHT, bmi = height_weight(mu,sigma,height_min,height_max,bmi_mu)
+
+    ### SUB SKILLS ### 
+    from player.skill_00_randomize import strength, technique
+    str_fac = strength(bmi)
+    tec_fac = technique()
+    
+    def factor():
+        from player.skill_00_randomize import overall, starting_eleven_bonus
+        fac = (overall() + starting_eleven_bonus()) / 2
+        return fac
+    fac = factor()
+    
+    def age_factor():
+        from player.skill_00_randomize import age_factor
+        return age_factor(AGE)
+    age_fac = age_factor()
+
+    ### SKILLS ###
+    def attack_01():
+        from player.skill_01_attack import skill_role_gk, skill_pos
+        x = int(fac * ((skill_role_gk[player_role] + skill_pos[position]) / 2))
+        return x
+    ATTACK_noAge = attack_01()
+    ATTACK = int(ATTACK_noAge * age_fac)
+    
+    def defence_02():
+        from player.skill_02_defence import skill_role_gk, skill_pos
+        x = int(fac * ((skill_role_gk[player_role] + skill_pos[position]) / 2))
+        return x
+    DEFENCE_noAge = defence_02()
+    DEFENCE = int(DEFENCE_noAge * age_fac)
+
+    def balance_03():
+        from player.skill_03_balance import skill_role_gk, skill_pos
+        x = int(((fac + str_fac) / 2) * ((skill_role_gk[player_role] + skill_pos[position]) / 2))
+        return x
+    BALANCE_noAge = balance_03()
+    BALANCE = int(BALANCE_noAge * age_fac)
+    
+    def stamina_04():
+        from player.skill_04_stamina import skill_role_gk, skill_pos
+        x = int(factor() * 5 + ((skill_role_gk[player_role] + skill_pos[position]) / 2)) 
+        return x
+    STAMINA = stamina_04()
+    
+    def top_speed_05():
+        from player.skill_05_top_speed import skill_role_gk, skill_pos
+        x = int(factor() * 5 + ((skill_role_gk[player_role] + skill_pos[position]) / 2)) 
+        return x
+    TOP_SPEED = top_speed_05()
+    
+    def acceleration_06():
+        from player.skill_06_acceleration import skill_role_gk, skill_pos
+        x = int(factor() * 5 + ((skill_role_gk[player_role] + skill_pos[position]) / 2)) 
+        return x
+    ACCELERATION = acceleration_06()
+    
+    def response_07():
+        from player.skill_07_response import skill_role_gk, skill_pos
+        x = int(factor() * 5 + ((skill_role_gk[player_role] + skill_pos[position]) / 2)) 
+        return x
+    RESPONSE = response_07()
+    
+    def agility_08():
+        from player.skill_08_agility import skill_role_gk, skill_pos
+        x = int(factor() * 5 + ((skill_role_gk[player_role] + skill_pos[position]) / 2)) 
+        return x
+    AGILITY = agility_08()
+    
+    def dribble_acc_09():
+        from player.skill_09_dribble_acc import skill_role_gk, skill_pos
+        x = int(factor() * 5 + ((skill_role_gk[player_role] + skill_pos[position]) / 2)) 
+        return x
+    DRIBBLE_ACCURACY = dribble_acc_09()
+    
+    def dribble_spd_10():
+        from player.skill_10_dribble_spd import skill_role_gk, skill_pos
+        x = int(factor() * 5 + ((skill_role_gk[player_role] + skill_pos[position]) / 2)) 
+        return x
+    DRIBBLE_SPEED = dribble_spd_10()
+    
+    def short_pass_acc_11():
+        from player.skill_11_short_pass_acc import skill_role_gk, skill_pos
+        x = int(factor() * 5 + ((skill_role_gk[player_role] + skill_pos[position]) / 2)) 
+        return x
+    SHORT_PASS_ACCURACY = short_pass_acc_11()
+
+    def short_pass_spd_12():
+        from player.skill_12_short_pass_spd import skill_role_gk, skill_pos
+        x = int(factor() * 5 + ((skill_role_gk[player_role] + skill_pos[position]) / 2)) 
+        return x
+    SHORT_PASS_SPEED = short_pass_spd_12()
+    
+    def long_pass_acc_13():
+        from player.skill_13_long_pass_acc import skill_role_gk, skill_pos
+        x = int(factor() * 5 + ((skill_role_gk[player_role] + skill_pos[position]) / 2)) 
+        return x
+    LONG_PASS_ACCURACY = long_pass_acc_13()
+    
+    def long_pass_spd_14():
+        from player.skill_14_long_pass_spd import skill_role_gk, skill_pos
+        x = int(factor() * 5 + ((skill_role_gk[player_role] + skill_pos[position]) / 2)) 
+        return x
+    LONG_PASS_SPEED = long_pass_spd_14()
+    
+    def shot_acc_15():
+        from player.skill_15_shot_acc import skill_role_gk, skill_pos
+        x = int(factor() * 5 + ((skill_role_gk[player_role] + skill_pos[position]) / 2)) 
+        return x
+    SHOT_ACCURACY = shot_acc_15()
+    
+    def shot_power_16():
+        from player.skill_16_shot_power import skill_role_gk, skill_pos
+        x = int(factor() * 5 + ((skill_role_gk[player_role] + skill_pos[position]) / 2)) 
+        return x
+    SHOT_POWER = shot_power_16()
+
+    def shot_tech_17():
+        from player.skill_17_shot_tech import skill_role_gk, skill_pos
+        x = int(factor() * 5 + ((skill_role_gk[player_role] + skill_pos[position]) / 2)) 
+        return x
+    SHOT_TECHNIQUE = shot_tech_17()
+
+    def free_kick_acc_18():
+        from player.skill_18_free_kick_acc import skill_role_gk, skill_pos
+        x = int(factor() * 5 + ((skill_role_gk[player_role] + skill_pos[position]) / 2)) 
+        return x
+    FREE_KICK_ACCURACY = free_kick_acc_18()
+    
+    def curling_19():
+        from player.skill_19_curling import skill_role_gk, skill_pos
+        x = int(factor() * 5 + ((skill_role_gk[player_role] + skill_pos[position]) / 2)) 
+        return x
+    CURLING = curling_19()
+    
+    def header_20():
+        from player.skill_20_header import skill_role_gk, skill_pos
+        x = int(factor() * 5 + ((skill_role_gk[player_role] + skill_pos[position]) / 2)) 
+        return x
+    HEADER = header_20()
+
+    def jump_21():
+        from player.skill_21_jump import skill_role_gk, skill_pos
+        x = int(factor() * 5 + ((skill_role_gk[player_role] + skill_pos[position]) / 2)) 
+        return x
+    JUMP = jump_21()
+    
+    def technique_22():
+        from player.skill_22_technique import skill_role_gk, skill_pos
+        x = int(factor() * 5 + ((skill_role_gk[player_role] + skill_pos[position]) / 2)) 
+        return x
+    TECHNIQUE = technique_22()
+    
+    def aggression_23():
+        from player.skill_23_aggression import skill_role_gk, skill_pos
+        x = int(factor() * 5 + ((skill_role_gk[player_role] + skill_pos[position]) / 2)) 
+        return x
+    AGGRESSION = aggression_23()
+    
+    def mentality_24():
+        from player.skill_24_mentality import skill_role_gk, skill_pos
+        x = int(factor() * 5 + ((skill_role_gk[player_role] + skill_pos[position]) / 2)) 
+        return x
+    MENTALITY = mentality_24()
+
+    def keeper_skills_25():
+        from player.skill_25_keeper_skills import skill_role_gk, skill_pos
+        x = int(factor() * 5 + ((skill_role_gk[player_role] + skill_pos[position]) / 2)) 
+        return x
+    KEEPER_SKILLS = keeper_skills_25()
+    
+    def team_work_26():
+        from player.skill_26_team_work import skill_role_gk, skill_pos
+        x = int(factor() * 5 + ((skill_role_gk[player_role] + skill_pos[position]) / 2)) 
+        return x
+    TEAM_WORK = team_work_26()
+    
     def ID_func():
         from lists import x
         x[0] += 1
@@ -64,7 +244,7 @@ def gk():
     CALLNAME = "0"
     NATIONALITY, NAME, PLAYER_NAT = nat_name()
     SHIRT_NAME = shirt_name(NAME)
-    AGE = age(age_mu,age_sigma)
+    
     POS_DEFAULT = "0"
     GK = "1"
     CWP = "0"
@@ -78,39 +258,15 @@ def gk():
     WF = "0"
     SS = "0"
     CF = "0"
-    HEIGHT, WEIGHT, bmi = height_weight(mu,sigma,height_min,height_max,bmi_mu)
+    
     FAV_SIDE, FOOT = center_side_foot()
     CONSISTENCY = str(0)
     CONDITION = str(0)
     INJURY_TOLERANCE = str(0)
     WEAK_FOOT_ACCURACY = str(0)
     WEAK_FOOT_FREQUENCY = str(0)
-    ATTACK = str(0)
-    DEFENCE = str(0)
-    BALANCE = str(0)
-    STAMINA = str(0)
-    TOP_SPEED = str(0)
-    ACCELERATION = str(0)
-    RESPONSE = str(0)
-    AGILITY = str(0)
-    DRIBBLE_ACCURACY = str(0)
-    DRIBBLE_SPEED = str(0)
-    SHORT_PASS_ACCURACY = str(0)
-    SHORT_PASS_SPEED = str(0)
-    LONG_PASS_ACCURACY = str(0)
-    LONG_PASS_SPEED = str(0)
-    SHOT_ACCURACY = str(0)
-    SHOT_POWER = str(0)
-    SHOT_TECHNIQUE = str(0)
-    FREE_KICK_ACCURACY = str(0)
-    CURLING = str(0)
-    HEADER = str(0)
-    JUMP = str(0)
-    TECHNIQUE = str(0)
-    AGGRESSION = str(0)
-    MENTALITY = str(0)
-    KEEPER_SKILLS = str(0)
-    TEAM_WORK = str(0)
+
+    ### ABILITYS ###
     DRIBBLING = str(0)
     TACTICAL_DRIBBLE = str(0)
     POSITIONING = str(0)
@@ -134,12 +290,16 @@ def gk():
     PENALTY_STOPPER = str(0)
     ONE_ON_ONE_STOPPER = str(0)
     LONG_THROW = str(0)
+    
+    ### MOVEMENT ###
     GOAL_CELEBRATION_1 = str(0)
     GOAL_CELEBRATION_2 = str(0)
     DRIBBLE = str(0)
     FREE_KICK = str(0)
     PENALTY = str(0)
     DROP = str(0)
+    
+    ### APPEARANCE ###
     SKIN_COLOR = str(0)
     FACE_TYPE = str(0)
     PRESET_FACE_NUMBER = str(0)
@@ -156,6 +316,8 @@ def gk():
     LEG_LENGTH = str(0)
     WRISTBAND = str(0)
     WRISTBAND_COLOR = str(0)
+    
+    ### TEAM & NUMBERS ###
     INTERNATIONAL_NUMBER = str(0)
     CLASSIC_NUMBER = str(0)
     CLUB_TEAM = str(0)
@@ -171,5 +333,8 @@ def gk():
     print(f"Weight: {WEIGHT} kg")
     print("Age: ",AGE)
     print(f"Foot: {FOOT}    Side: {FAV_SIDE}")
+    print("Attack: ", ATTACK)
+    print("Defence: ", DEFENCE)
+    print("Balance: ", BALANCE)
 
     return rows

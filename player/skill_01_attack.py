@@ -1,7 +1,7 @@
 skill_pos = {"gk": 40, "cwp": 75, "cb": 60, "sb": 75, "dmf": 80, "wb": 80, "cmf": 85, "smf": 85, "amf": 90, "fw": 90, "ss": 95, "cf": 99}
 
 skill_role_gk = {"goalkeeper": 40,
-                 "sweeper keeper" : 60}
+                 "sweeper keeper": 60}
 
 skill_role_cwp = {"sweeper": 75}
 
