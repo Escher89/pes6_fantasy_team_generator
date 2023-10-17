@@ -1,15 +1,15 @@
 skill_pos = {"gk": 1,
              "cwp": 1,
              "cb": 1,
-             "sb": 1,
-             "dmf": 1,
-             "wb": 1,
-             "cmf": 1,
-             "smf": 1,
-             "amf": 1,
-             "fw": 1,
-             "ss": 1,
-             "cf": 1}
+             "sb": 0.95,
+             "dmf": 0.95,
+             "wb": 0.9,
+             "cmf": 0.85,
+             "smf": 0.8,
+             "amf": 0.8,
+             "fw": 0.75,
+             "ss": 0.75,
+             "cf": 0.5}
 
 skill_role_gk = {"goalkeeper": 1,
                  "sweeper keeper" : 1}
