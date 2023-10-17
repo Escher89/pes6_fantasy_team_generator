@@ -1,68 +1,79 @@
-skill_pos = {"gk": 99, "cwp": 99, "cb": 99, "sb": 99, "dmf": 99, "wb": 99, "cmf": 99, "smf": 99, "amf": 99, "fw": 99, "ss": 99, "cf": 99}
+skill_pos = {"gk": 1,
+             "cwp": 1,
+             "cb": 1,
+             "sb": 1,
+             "dmf": 1,
+             "wb": 1,
+             "cmf": 1,
+             "smf": 1,
+             "amf": 1,
+             "fw": 1,
+             "ss": 1,
+             "cf": 1}
 
-skill_role_gk = {"goalkeeper": 99,
-                 "sweeper keeper" : 99}
+skill_role_gk = {"goalkeeper": 1,
+                 "sweeper keeper" : 1}
 
-skill_role_cwp = {"sweeper": 99}
+skill_role_cwp = {"sweeper": 1}
 
-skill_role_cb = {"center back" : 99,
-                 "ball playing center back" : 99,
-                 "wide center back" : 99,
-                 "no non-sense center back" : 99}
+skill_role_cb = {"center back" : 1,
+                 "ball playing center back" : 1,
+                 "wide center back" : 1,
+                 "no non-sense center back" : 1}
 
-skill_role_sb = {"full back" : 95,
-                 "wing back" : 95,
-                 "no non-sense full back" : 99,
-                 "complete wing back" : 95,
-                 "inverted wing back" : 95}
+skill_role_sb = {"full back" : 1,
+                 "wing back" : 1,
+                 "no non-sense full back" : 1,
+                 "complete wing back" : 1,
+                 "inverted wing back" : 1}
 
-skill_role_dmf = {"defensive midfielder" : 99,
-                  "deep lying playmaker" : 95,
-                  "ball winning midfielder" : 99,
-                  "anchor man" : 99,
-                  "half back" : 99,
-                  "regista" : 95,
-                  "segundo volante" : 95}
+skill_role_dmf = {"defensive midfielder" : 1,
+                  "deep lying playmaker" : 1,
+                  "ball winning midfielder" : 1,
+                  "anchor man" : 1,
+                  "half back" : 1,
+                  "regista" : 1,
+                  "segundo volante" : 1}
 
-skill_role_wb = {"wing back" : 95,
-                 "complete wing back" : 95,
-                 "inverted wing back" : 95}
+skill_role_wb = {"wing back" : 1,
+                 "complete wing back" : 1,
+                 "inverted wing back" : 1}
 
-skill_role_cmf = {"central midfielder" : 99,
-                  "deep lying playmaker" : 95,
-                  "box to box midfielder" : 99,
-                  "advanced playmaker" : 91,
-                  "ball winning midfielder" : 99,
-                  "vertical playmaker" : 95,
-                  "mezzala" : 91,
-                  "carrilero" : 95}
+skill_role_cmf = {"central midfielder" : 1,
+                  "deep lying playmaker" : 1,
+                  "box to box midfielder" : 1,
+                  "advanced playmaker" : 1,
+                  "ball winning midfielder" : 1,
+                  "vertical playmaker" : 1,
+                  "mezzala" : 1,
+                  "carrilero" : 1}
 
-skill_role_smf = {"wide midflieder" : 95,
-                  "winger" : 91,
-                  "defensive winger" : 95,
-                  "wide playmaker" : 91,
-                  "inverted winger" : 91}
+skill_role_smf = {"wide midflieder" : 1,
+                  "winger" : 1,
+                  "defensive winger" : 1,
+                  "wide playmaker" : 1,
+                  "inverted winger" : 1}
 
-skill_role_amf = {"offensive midfielder" : 95,
-                  "advanced playmaker" : 91,
-                  "trequatista" : 87,
-                  "enganche" : 91,
-                  "shadow striker" : 95}
+skill_role_amf = {"offensive midfielder" : 1,
+                  "advanced playmaker" : 1,
+                  "trequatista" : 1,
+                  "enganche" : 1,
+                  "shadow striker" : 1}
 
-skill_role_fw = {"winger" : 91,
-                 "advanced playmaker" : 91,
-                 "inside forward" : 95,
-                 "trequatista" : 87,
-                 "wide target man" : 99, 
-                 "raumdeuter" : 95,
-                 "inverted winger" : 91}
+skill_role_fw = {"winger" : 1,
+                 "advanced playmaker" : 1,
+                 "inside forward" : 1,
+                 "trequatista" : 1,
+                 "wide target man" : 1, 
+                "raumdeuter" : 1,
+                "inverted winger" : 1}
 
-skill_role_ss = {"deep lying forward" : 95,
-                 "pressing forward" : 99,
-                 "trequatista" : 87,
-                 "false nine" : 95}
+skill_role_ss = {"deep lying forward" : 1,
+                 "pressing forward" : 1,
+                 "trequatista" : 1,
+                 "false nine" : 1}
 
-skill_role_cf = {"advanced forward" : 95,
-                 "target man" : 99, 
-                 "poacher" : 87,
-                 "complete forward" : 95}
+skill_role_cf = {"advanced forward" : 1,
+                 "target man" : 1, 
+                 "poacher" : 1,
+                 "complete forward" : 1}
