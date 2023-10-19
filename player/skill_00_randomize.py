@@ -15,7 +15,7 @@ def overall(age):
     else:
         overall_age = overall
 
-    return overall, overall_age
+    return overall_age
 
 def strength(bmi):
     x = (bmi - 22) / 10

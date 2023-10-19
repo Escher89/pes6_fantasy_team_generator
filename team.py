@@ -10,9 +10,9 @@ print("Players:", player_qt)
 
 from lists import nat_list
 
-print("Average skill:")
-overall_mu = 550 #float(input("Input 400-700: "))
+overall_mu = 600 #float(input("Input 400-700: "))
 overall_sigma = 75
+print("Average skill: ", overall_mu)
 
 foreign_ratio =  5 #input("Input foreigner ratio 1 to ")
 

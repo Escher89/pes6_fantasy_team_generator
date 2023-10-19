@@ -1,15 +1,15 @@
-skill_pos = {"gk": 0.25,
-             "cwp": 0.6,
-             "cb": 0.5,
-             "sb": 0.65,
+skill_pos = {"gk": 0.2,
+             "cwp": 0.5,
+             "cb": 0.33,
+             "sb": 0.6,
              "dmf": 0.6,
-             "wb": 0.7,
-             "cmf": 0.75,
-             "smf": 0.8,
-             "amf": 0.8,
-             "fw": 0.8,
-             "ss": 0.9,
-             "cf": 1.0}
+             "wb": 0.8,
+             "cmf": 0.8,
+             "smf": 1,
+             "amf": 1,
+             "fw": 1.1,
+             "ss": 1.1,
+             "cf": 1.2}
 
 skill_role_gk = {"goalkeeper": 0.8,
                  "sweeper keeper": 1}
@@ -24,7 +24,7 @@ skill_role_cb = {"center back" : 1,
 skill_role_sb = {"full back" : 0.9,
                  "wing back" : 1,
                  "no non-sense full back" : 0.8,
-                 "complete wing back" : 1,
+                 "complete wing back" : 1.1,
                  "inverted wing back" : 1}
 
 skill_role_dmf = {"defensive midfielder" : 1,

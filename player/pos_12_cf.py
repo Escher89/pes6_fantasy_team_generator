@@ -95,7 +95,7 @@ def cf():
     tec_fac = technique()
 
     from player.skill_00_randomize import overall
-    points_noAge, points = overall(AGE) 
+    points = overall(AGE) 
 
     ### SKILLS ###
     from player.skill_01_attack import skill_role_cf, skill_pos
@@ -105,7 +105,7 @@ def cf():
     DEFENCE = (skill_role_cf[player_role] + skill_pos[position]) / 2
 
     from player.skill_03_balance import skill_role_cf, skill_pos
-    BALANCE = (skill_role_cf[player_role] + skill_pos[position] + str_fac) / 3
+    BALANCE = (skill_role_cf[player_role] + skill_pos[position]) / 2  + str_fac
 
     from player.skill_04_stamina import skill_role_cf, skill_pos
     STAMINA = (skill_role_cf[player_role] + skill_pos[position]) / 2
@@ -189,27 +189,35 @@ def cf():
 
     ### 2nd positions ###
     def second_pos():
-        #if player_role == "ball playing center back":
-        GK = "0"
-        CWP = "0"
-        CB = "0"
-        SB = random.choices(["0","1"], weights=[3,1])
-        DMF = random.choices(["0","1"], weights=[3,1])
-        WB = "0"
-        CMF = random.choices(["0","1"], weights=[4,1])
-        SMF = random.choices(["0","1"], weights=[2,1])
-        AMF = "0"
-        FW = "0"
-        SS = "0"
-        CF = "1"
-        return GK, CWP, CB, SB[0], DMF[0], WB, CMF[0], SMF[0], AMF, FW, SS, CF
+        def choices(y,z):
+            x = random.choices([0,1], weights=[y,z])[0]
+            return x
+        roles = ["advanced forward", "target man", "poacher", "complete forward"]
+        x = roles.index(player_role)
+        GK =  [0, 0, 0, 0]
+        CWP = [0, 0, 0, 0]
+        CB =  [0, 0, 0, 0]
+        SB =  [0, 0, 0, 0]
+        DMF = [0, 0, 0, 0]
+        WB =  [0, 0, 0, 0]
+        CMF = [0, 0, 0, 0]
+        SMF = [0, 0, 0, 0]
+        AMF = [0, 0, 0, 0]
+        FW =  [0, choices(3,1), choices(3,1), choices(2,1)]
+        SS =  [0, choices(4,1), 0, choices(1,1)]
+        CF =  [1, 1, 1, 1]
+        return GK[x], CWP[x], CB[x], SB[x], DMF[x], WB[x], CMF[x], SMF[x], AMF[x], FW[x], SS[x], CF[x]
+    
+    GK, CWP, CB, SB, DMF, WB, CMF, SMF, AMF, FW, SS, CF = second_pos()
+    from player.second_pos_str import second_pos_str
+    second_positions = second_pos_str(GK,CWP,CB,SB,DMF,WB,CMF,SMF,AMF,FW,SS,CF)
 
     ID = ID_func()
     CALLNAME = "0"
     NATIONALITY, NAME, PLAYER_NAT = nat_name()
     SHIRT_NAME = shirt_name(NAME)
     POS_DEFAULT = "11"
-    GK, CWP, CB, SB, DMF, WB, CMF, SMF, AMF, WF, SS, CF = second_pos()
+    GK, CWP, CB, SB, DMF, WB, CMF, SMF, AMF, FW, SS, CF = second_pos()
     
     FAV_SIDE, FOOT = center_side_foot()
     CONSISTENCY = str(0)
@@ -275,7 +283,7 @@ def cf():
     CLUB_TEAM = str(0)
     CLUB_NUMBER = str(number())
 
-    rows = [ID,NAME,SHIRT_NAME,CALLNAME,NATIONALITY,AGE,POS_DEFAULT,GK,CWP,CB,SB,DMF,WB,CMF,SMF,AMF,WF,SS,CF,
+    rows = [ID,NAME,SHIRT_NAME,CALLNAME,NATIONALITY,AGE,POS_DEFAULT,GK,CWP,CB,SB,DMF,WB,CMF,SMF,AMF,FW,SS,CF,
             WEIGHT,HEIGHT,FOOT,FAV_SIDE,CONSISTENCY,CONDITION,INJURY_TOLERANCE,WEAK_FOOT_ACCURACY,WEAK_FOOT_FREQUENCY,
             ATT,DEF,BAL,STA,TOP,ACC,RES,AGI,DAC,DSP,SPA,SPS,LPA,LPS,SAC,SPO,STE,FKA,CUR,HEA,JUM,TEC,AGG,MEN,KEE,TEA,
             DRIBBLING,TACTICAL_DRIBBLE,POSITIONING,REACTION,PLAYMAKING,PASSING,SCORING,ONE_ONE_SCORE,POST_PLAYER,LINES,MIDDLE_SHOOTING,SIDE,CENTRE,PENALTIES,ONE_TOUCH_PASS,OUTSIDE,MARKING,SLIDING,COVERING,D_LINE_CONTROL,PENALTY_STOPPER,ONE_ON_ONE_STOPPER,LONG_THROW,
@@ -283,7 +291,7 @@ def cf():
             SKIN_COLOR,FACE_TYPE,PRESET_FACE_NUMBER,HEAD_WIDTH,NECK_LENGTH,NECK_WIDTH,SHOULDER_HEIGHT,SHOULDER_WIDTH,CHEST_MEASUREMENT,WAIST_CIRCUMFERENCE,ARM_CIRCUMFERENCE,LEG_CIRCUMFERENCE,CALF_CIRCUMFERENCE,LEG_LENGTH,WRISTBAND,WRISTBAND_COLOR,
             INTERNATIONAL_NUMBER,CLASSIC_NUMBER,CLUB_TEAM,CLUB_NUMBER]
 
-    print("Position: CF   #",CLUB_NUMBER)
+    print("Position: CF   #",CLUB_NUMBER, second_positions)
     print(f"Name: {NAME} ({PLAYER_NAT}) [{NATIONALITY}]")
     print("Role: ",player_role)
     print(f"Height: {float(HEIGHT)/100.0:.2f} m")

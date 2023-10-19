@@ -1,15 +1,15 @@
-skill_pos = {"gk": 1,
-             "cwp": 1,
-             "cb": 1,
-             "sb": 0.95,
-             "dmf": 0.95,
-             "wb": 0.9,
-             "cmf": 0.85,
-             "smf": 0.8,
-             "amf": 0.8,
-             "fw": 0.75,
-             "ss": 0.75,
-             "cf": 0.5}
+skill_pos = {"gk": 1.2,
+             "cwp": 1.2,
+             "cb": 1.2,
+             "sb": 1,
+             "dmf": 0.9,
+             "wb": 0.8,
+             "cmf": 0.8,
+             "smf": 0.33,
+             "amf": 0.25,
+             "fw": 0.15,
+             "ss": 0.2,
+             "cf": 0.1}
 
 skill_role_gk = {"goalkeeper": 1,
                  "sweeper keeper" : 1}
@@ -21,19 +21,19 @@ skill_role_cb = {"center back" : 1,
                  "wide center back" : 1,
                  "no non-sense center back" : 1}
 
-skill_role_sb = {"full back" : 1,
+skill_role_sb = {"full back" : 1.1,
                  "wing back" : 1,
-                 "no non-sense full back" : 1,
+                 "no non-sense full back" : 1.1,
                  "complete wing back" : 1,
                  "inverted wing back" : 1}
 
 skill_role_dmf = {"defensive midfielder" : 1,
                   "deep lying playmaker" : 1,
                   "ball winning midfielder" : 1,
-                  "anchor man" : 1,
-                  "half back" : 1,
-                  "regista" : 1,
-                  "segundo volante" : 1}
+                  "anchor man" : 1.1,
+                  "half back" : 1.2,
+                  "regista" : 0.95,
+                  "segundo volante" : 0.9}
 
 skill_role_wb = {"wing back" : 1,
                  "complete wing back" : 1,

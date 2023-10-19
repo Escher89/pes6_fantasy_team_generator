@@ -52,7 +52,7 @@ def cwp():
     tec_fac = technique()
     
     from player.skill_00_randomize import overall
-    points_noAge, points = overall(AGE) 
+    points = overall(AGE) 
     
     ### SKILLS ###
     from player.skill_01_attack import skill_role_cwp, skill_pos
@@ -62,7 +62,7 @@ def cwp():
     DEFENCE = (skill_role_cwp[player_role] + skill_pos[position]) / 2
     
     from player.skill_03_balance import skill_role_cwp, skill_pos
-    BALANCE = (skill_role_cwp[player_role] + skill_pos[position] + str_fac) / 3
+    BALANCE = (skill_role_cwp[player_role] + skill_pos[position]) / 2 + str_fac
    
     from player.skill_04_stamina import skill_role_cwp, skill_pos
     STAMINA = (skill_role_cwp[player_role] + skill_pos[position]) / 2
@@ -147,19 +147,19 @@ def cwp():
     ### 2nd positions ###
     def second_pos():
         if player_role == "sweeper":
-            GK = "0"
-            CWP = "1"
-            CB = "0"
-            SB = "0"
-            DMF = random.choices(["0","1"], weights=[1,1])
-            WB = "0"
-            CMF = random.choices(["0","1"], weights=[150,ATTACK])
-            SMF = "0"
-            AMF = "0"
-            FW = "0"
-            SS = "0"
-            CF = "0"
-        return GK, CWP, CB, SB, DMF[0], WB, CMF[0], SMF, AMF, FW, SS, CF
+            GK = 0
+            CWP = 1
+            CB = random.choices([0,1], weights=[2,1][0])
+            SB = 0
+            DMF = random.choices([0,1], weights=[1,1][0])
+            WB = 0
+            CMF = random.choices([0,1], weights=[4,1][0])
+            SMF = 0
+            AMF = random.choices([0,1], weights=[8,1][0])
+            FW = 0
+            SS = 0
+            CF = 0
+        return GK, CWP, CB, SB, DMF, WB, CMF, SMF, AMF, FW, SS, CF
 
     def ID_func():
         from lists import x
@@ -170,10 +170,8 @@ def cwp():
     CALLNAME = "0"
     NATIONALITY, NAME, PLAYER_NAT = nat_name()
     SHIRT_NAME = shirt_name(NAME)
-    #AGE = age(age_mu,age_sigma)
     POS_DEFAULT = "2"
-    GK, CWP, CB, SB, DMF, WB, CMF, SMF, AMF, WF, SS, CF = second_pos()
-    #HEIGHT, WEIGHT = height_weight(mu,sigma,height_min,height_max,bmi_mu)
+    GK, CWP, CB, SB, DMF, WB, CMF, SMF, AMF, FW, SS, CF = second_pos()
     FAV_SIDE, FOOT= center_side_foot()
     
     CONSISTENCY = str(0)
@@ -239,7 +237,7 @@ def cwp():
     CLUB_TEAM = str(0)
     CLUB_NUMBER = str(number())
 
-    rows = [ID,NAME,SHIRT_NAME,CALLNAME,NATIONALITY,AGE,POS_DEFAULT,GK,CWP,CB,SB,DMF,WB,CMF,SMF,AMF,WF,SS,CF,
+    rows = [ID,NAME,SHIRT_NAME,CALLNAME,NATIONALITY,AGE,POS_DEFAULT,GK,CWP,CB,SB,DMF,WB,CMF,SMF,AMF,FW,SS,CF,
             WEIGHT,HEIGHT,FOOT,FAV_SIDE,CONSISTENCY,CONDITION,INJURY_TOLERANCE,WEAK_FOOT_ACCURACY,WEAK_FOOT_FREQUENCY,
             ATT,DEF,BAL,STA,TOP,ACC,RES,AGI,DAC,DSP,SPA,SPS,LPA,LPS,SAC,SPO,STE,FKA,CUR,HEA,JUM,TEC,AGG,MEN,KEE,TEA,
             DRIBBLING,TACTICAL_DRIBBLE,POSITIONING,REACTION,PLAYMAKING,PASSING,SCORING,ONE_ONE_SCORE,POST_PLAYER,LINES,MIDDLE_SHOOTING,SIDE,CENTRE,PENALTIES,ONE_TOUCH_PASS,OUTSIDE,MARKING,SLIDING,COVERING,D_LINE_CONTROL,PENALTY_STOPPER,ONE_ON_ONE_STOPPER,LONG_THROW,

@@ -65,7 +65,7 @@ def gk():
     tec_fac = technique()
     
     from player.skill_00_randomize import overall
-    points_noAge, points = overall(AGE) 
+    points = overall(AGE) 
     
     ### SKILLS ###
     from player.skill_01_attack import skill_role_gk, skill_pos
