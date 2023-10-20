@@ -75,7 +75,7 @@ def gk():
     DEFENCE = (skill_role_gk[player_role] + skill_pos[position]) / 2
     
     from player.skill_03_balance import skill_role_gk, skill_pos
-    BALANCE = (skill_role_gk[player_role] + skill_pos[position] + str_fac) / 3
+    BALANCE = (skill_role_gk[player_role] + skill_pos[position])/ 2 + str_fac
    
     from player.skill_04_stamina import skill_role_gk, skill_pos
     STAMINA = (skill_role_gk[player_role] + skill_pos[position]) / 2

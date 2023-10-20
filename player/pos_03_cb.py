@@ -202,8 +202,10 @@ def cb():
     CALLNAME = "0"
     NATIONALITY, NAME, PLAYER_NAT = nat_name()
     SHIRT_NAME = shirt_name(NAME)
-    POS_DEFAULT = "3"
-    
+
+    from player.second_pos_str import pos_rand, final_position
+    pos_list = pos_rand(GK, CWP, CB, SB, DMF, WB, CMF, SMF, AMF, FW, SS, CF)
+    POS_DEFAULT = random.choice(pos_list)
     
     FAV_SIDE, FOOT = center_side_foot()
     CONSISTENCY = str(0)
@@ -277,7 +279,7 @@ def cb():
             SKIN_COLOR,FACE_TYPE,PRESET_FACE_NUMBER,HEAD_WIDTH,NECK_LENGTH,NECK_WIDTH,SHOULDER_HEIGHT,SHOULDER_WIDTH,CHEST_MEASUREMENT,WAIST_CIRCUMFERENCE,ARM_CIRCUMFERENCE,LEG_CIRCUMFERENCE,CALF_CIRCUMFERENCE,LEG_LENGTH,WRISTBAND,WRISTBAND_COLOR,
             INTERNATIONAL_NUMBER,CLASSIC_NUMBER,CLUB_TEAM,CLUB_NUMBER]
 
-    print("Position: CB   #",CLUB_NUMBER, second_positions)
+    print(f"Position: {final_position(POS_DEFAULT)}   #",CLUB_NUMBER, second_positions)
     print(f"Name: {NAME} ({PLAYER_NAT}) [{NATIONALITY}]")
     print("Role: ",player_role)
     print(f"Height: {float(HEIGHT)/100.0:.2f} m")

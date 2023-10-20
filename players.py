@@ -63,7 +63,7 @@ def starting_eleven():
     
     return
 
-def substitutes():                          
+def substitutes():
     from team import subs_list
 
     print("---SUBS---")

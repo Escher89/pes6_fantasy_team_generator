@@ -210,7 +210,7 @@ def amf():
         CMF = [choices(4,1), choices(4,1), 0, 0, 0]
         SMF = [0, 0, choices(1,1), 0, 0]
         AMF = [1, 1, 1, 1, 1]
-        FW =  [0, 0, 0, choices(1,1), 0]
+        FW =  [0, 0, choices(1,1), 0, 0]
         SS =  [choices(4,1), choices(8,1), choices(1,1), 0, 1]
         CF =  [0, 0, choices(4,1), 0, choices(3,1)]
         return GK[x], CWP[x], CB[x], SB[x], DMF[x], WB[x], CMF[x], SMF[x], AMF[x], FW[x], SS[x], CF[x]
@@ -219,11 +219,19 @@ def amf():
     from player.second_pos_str import second_pos_str
     second_positions = second_pos_str(GK,CWP,CB,SB,DMF,WB,CMF,SMF,AMF,FW,SS,CF)
 
+    def ID_func():
+        from lists import x
+        x[0] += 1
+        return str(x[0])
+
     ID = ID_func()
     CALLNAME = "0"
     NATIONALITY, NAME, PLAYER_NAT = nat_name()
     SHIRT_NAME = shirt_name(NAME)
-    POS_DEFAULT = "9"
+    
+    from player.second_pos_str import pos_rand, final_position
+    pos_list = pos_rand(GK, CWP, CB, SB, DMF, WB, CMF, SMF, AMF, FW, SS, CF)
+    POS_DEFAULT = random.choice(pos_list)
     
     FAV_SIDE, FOOT = center_side_foot()
     CONSISTENCY = str(0)
@@ -297,7 +305,7 @@ def amf():
             SKIN_COLOR,FACE_TYPE,PRESET_FACE_NUMBER,HEAD_WIDTH,NECK_LENGTH,NECK_WIDTH,SHOULDER_HEIGHT,SHOULDER_WIDTH,CHEST_MEASUREMENT,WAIST_CIRCUMFERENCE,ARM_CIRCUMFERENCE,LEG_CIRCUMFERENCE,CALF_CIRCUMFERENCE,LEG_LENGTH,WRISTBAND,WRISTBAND_COLOR,
             INTERNATIONAL_NUMBER,CLASSIC_NUMBER,CLUB_TEAM,CLUB_NUMBER]
 
-    print("Position: AMF   #",CLUB_NUMBER, second_positions)
+    print(f"Position: {final_position(POS_DEFAULT)}   #",CLUB_NUMBER, second_positions)
     print(f"Name: {NAME} ({PLAYER_NAT}) [{NATIONALITY}]")
     print("Role: ",player_role)
     print(f"Height: {float(HEIGHT)/100.0:.2f} m")

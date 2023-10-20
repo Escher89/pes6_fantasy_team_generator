@@ -275,11 +275,19 @@ def fw():
     from player.second_pos_str import second_pos_str
     second_positions = second_pos_str(GK,CWP,CB,SB,DMF,WB,CMF,SMF,AMF,FW,SS,CF)
 
+    def ID_func():
+        from lists import x
+        x[0] += 1
+        return str(x[0])
+
     ID = ID_func()
     CALLNAME = "0"
     NATIONALITY, NAME, PLAYER_NAT = nat_name()
     SHIRT_NAME = shirt_name(NAME)
-    POS_DEFAULT = "10"
+    
+    from player.second_pos_str import pos_rand, final_position
+    pos_list = pos_rand(GK, CWP, CB, SB, DMF, WB, CMF, SMF, AMF, FW, SS, CF)
+    POS_DEFAULT = random.choice(pos_list)
     
     FAV_SIDE, FOOT = side_foot()
     CONSISTENCY = str(0)
@@ -353,7 +361,7 @@ def fw():
             SKIN_COLOR,FACE_TYPE,PRESET_FACE_NUMBER,HEAD_WIDTH,NECK_LENGTH,NECK_WIDTH,SHOULDER_HEIGHT,SHOULDER_WIDTH,CHEST_MEASUREMENT,WAIST_CIRCUMFERENCE,ARM_CIRCUMFERENCE,LEG_CIRCUMFERENCE,CALF_CIRCUMFERENCE,LEG_LENGTH,WRISTBAND,WRISTBAND_COLOR,
             INTERNATIONAL_NUMBER,CLASSIC_NUMBER,CLUB_TEAM,CLUB_NUMBER]
 
-    print("Position: FW   #",CLUB_NUMBER, second_positions)
+    print(f"Position: {final_position(POS_DEFAULT)}   #",CLUB_NUMBER, second_positions)
     print(f"Name: {NAME} ({PLAYER_NAT}) [{NATIONALITY}]")
     print("Role: ",player_role)
     print(f"Height: {float(HEIGHT)/100.0:.2f} m")
