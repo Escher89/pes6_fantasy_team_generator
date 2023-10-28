@@ -104,3 +104,22 @@ def skills(points,ATTACK,DEFENCE,BALANCE,STAMINA,TOP_SPEED,ACCELERATION,RESPONSE
     liste3 = [ATT,DEF,BAL,STA,TOP,ACC,RES,AGI,DAC,DSP,SPA,SPS,LPA,LPS,SAC,SPO,STE,FKA,CUR,HEA,JUM,TEC,AGG,MEN,KEE,TEA]
 
     return liste3
+
+def role_factor(role):
+    import csv
+    from lists import all_roles
+    with open('skill_weights.csv', mode ='r')as file:
+        csvFile = csv.reader(file)
+        row = list(csvFile)[30]
+        col = float(row[all_roles.index(role) + 1])
+    return col
+
+def skill(role,x):
+    import csv
+    from lists import all_roles
+    with open('skill_weights.csv', mode ='r')as file:
+        csvFile = csv.reader(file)
+        row = list(csvFile)[x + 2]
+        col = float(row[all_roles.index(role) + 1])
+        #print(col)
+    return col

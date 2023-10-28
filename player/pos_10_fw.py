@@ -1,7 +1,6 @@
 import random
 
 def fw():
-    position = "fw"
     ### NAME AND NATIONALITY ###
     from player.nat_name import nat_name, shirt_name
 
@@ -35,74 +34,73 @@ def fw():
     def role():
         from lists import types_fw, types_amf, types_ss, sub_roles_fw, sub_roles_amf, sub_roles_ss
         from team import main_team_list
-
         if len(main_team_list) > 0:
-            if "enganche" not in types_amf and "advanced playmaker" in types_fw:
-                    types_fw.remove("advanced playmaker")
+            if "amf_ap" not in types_amf and "fw_ap" in types_fw:
+                    types_fw.remove("fw_ap")
 
             role = random.choice(types_fw)
 
-            if role == "winger":
-                types_fw.append("winger")
-            if role == "inverted winger":
-                types_fw.append("inverted winger")
-            if role == "inside forward":
-                types_fw.append("inside forward")
+            if role == "fw_w":
+                types_fw.append("fw_w")
+            if role == "fw_iw":
+                types_fw.append("fw_iw")
+            if role == "fw_if":
+                types_fw.append("fw_if")
             
             ### variety
             if role in types_fw:
                 types_fw.remove(role)
-            if role in types_ss:
-                types_ss.remove(role)
+            if role == "fw_t":
+                types_ss.remove("ss_t")
             
             return role
         else:
-            if "enganche" not in sub_roles_amf and "advanced playmaker" in sub_roles_fw:
-                    sub_roles_fw.remove("advanced playmaker")
+            if "amf_ap" not in sub_roles_amf and "fw_ap" in sub_roles_fw:
+                    sub_roles_fw.remove("fw_ap")
 
             role = random.choice(sub_roles_fw)
 
-            if role == "winger":
-                sub_roles_fw.append("winger")
-            if role == "inverted winger":
-                sub_roles_fw.append("inverted winger")
-            if role == "inside forward":
-                sub_roles_fw.append("inside forward")
+            if role == "fw_w":
+                sub_roles_fw.append("fw_w")
+            if role == "fw_iw":
+                sub_roles_fw.append("fw_iw")
+            if role == "fw_if":
+                sub_roles_fw.append("fw_if")
             
             ### variety
             if role in sub_roles_fw:
                 sub_roles_fw.remove(role)
-            if role in sub_roles_ss:
-                sub_roles_ss.remove(role)
+            if role == "fw_t":
+                sub_roles_ss.remove("ss_t")
             
             return role
     player_role = role()
         
     def side_foot():
         ### main side
-        from lists import smf_side_list, sub_smf_side_list
+        from lists import fw_side_list, sub_fw_side_list
         from team import main_team_list
         
         if len(main_team_list) > 0:
-            if "L" in smf_side_list:   
-                smf_side_list.remove("R")
-                smf_side_rnd_list = random.choices(smf_side_list, weights= [4,1])
-                side = smf_side_rnd_list[0]
-                smf_side_list.append("R")
-                smf_side_list.remove("L")
+            if "L" in fw_side_list:   
+                fw_side_list.remove("R")
+                fw_side_rnd_list = random.choices(fw_side_list, weights= [4,1])
+                side = fw_side_rnd_list[0]
+                fw_side_list.append("R")
+                fw_side_list.remove("L")
             else:
-                smf_side_rnd_list = random.choices(smf_side_list, weights= [4,1])
-                side = smf_side_rnd_list[0]
+                fw_side_rnd_list = random.choices(fw_side_list, weights= [4,1])
+                side = fw_side_rnd_list[0]
         else:
-            if "L" in sub_smf_side_list:   
-                sub_smf_side_list.remove("R")
-                smf_side_rnd_list = random.choices(sub_smf_side_list, weights= [4,1])
-                side = smf_side_rnd_list[0]
-                sub_smf_side_list.append("R")
-                sub_smf_side_list.remove("L")
+            if "L" in sub_fw_side_list:   
+                sub_fw_side_list.remove("R")
+                fw_side_rnd_list = random.choices(sub_fw_side_list, weights= [4,1])
+                side = fw_side_rnd_list[0]
+                sub_fw_side_list.append("R")
+                sub_fw_side_list.remove("L")
             else:
-                smf_side_rnd_list = random.choices(sub_smf_side_list, weights= [4,1])
-                side = smf_side_rnd_list[0]
+                fw_side_rnd_list = random.choices(sub_fw_side_list, weights= [4,1])
+                side = fw_side_rnd_list[0]
     
         ### main foot
         foot_list = ["L", "R"]
@@ -118,7 +116,7 @@ def fw():
             foot = lst[0]
         
         ### special rule for inverted roles
-        if side == "inside forward" or side == "inverted winger":
+        if side == "fw_if" or side == "fw_iw":
             if side == "L":
                 foot = "R"
             if side == "R":
@@ -132,7 +130,7 @@ def fw():
     ### HEIGHT AND WEIGHT ###
     from player.height_weight import height_weight
 
-    if player_role == "wide target man": 
+    if player_role == "fw_wtm": 
         mu = 185
         sigma = 5
         height_min = 180
@@ -161,83 +159,33 @@ def fw():
     points = overall(AGE) 
 
     ### SKILLS ###
-    from player.skill_01_attack import skill_role_fw, skill_pos
-    ATTACK = (skill_role_fw[player_role] + skill_pos[position]) / 2
-
-    from player.skill_02_defence import skill_role_fw, skill_pos
-    DEFENCE = (skill_role_fw[player_role] + skill_pos[position]) / 2
-
-    from player.skill_03_balance import skill_role_fw, skill_pos
-    BALANCE = (skill_role_fw[player_role] + skill_pos[position]) / 2 + str_fac
-
-    from player.skill_04_stamina import skill_role_fw, skill_pos
-    STAMINA = (skill_role_fw[player_role] + skill_pos[position]) / 2
-
-    from player.skill_05_top_speed import skill_role_fw, skill_pos
-    TOP_SPEED = (skill_role_fw[player_role] + skill_pos[position]) / 2
-
-    from player.skill_06_acceleration import skill_role_fw, skill_pos
-    ACCELERATION = (skill_role_fw[player_role] + skill_pos[position]) / 2
-
-    from player.skill_07_response import skill_role_fw, skill_pos
-    RESPONSE = (skill_role_fw[player_role] + skill_pos[position]) / 2
-
-    from player.skill_08_agility import skill_role_fw, skill_pos
-    AGILITY = (skill_role_fw[player_role] + skill_pos[position]) / 2
-
-    from player.skill_09_dribble_acc import skill_role_fw, skill_pos
-    DRIBBLE_ACCURACY = (skill_role_fw[player_role] + skill_pos[position]) / 2
-
-    from player.skill_10_dribble_spd import skill_role_fw, skill_pos
-    DRIBBLE_SPEED = (skill_role_fw[player_role] + skill_pos[position]) / 2
-
-    from player.skill_11_short_pass_acc import skill_role_fw, skill_pos
-    SHORT_PASS_ACCURACY = (skill_role_fw[player_role] + skill_pos[position]) / 2
-
-    from player.skill_12_short_pass_spd import skill_role_fw, skill_pos
-    SHORT_PASS_SPEED = (skill_role_fw[player_role] + skill_pos[position]) / 2
-
-    from player.skill_13_long_pass_acc import skill_role_fw, skill_pos
-    LONG_PASS_ACCURACY = (skill_role_fw[player_role] + skill_pos[position]) / 2
-
-    from player.skill_14_long_pass_spd import skill_role_fw, skill_pos
-    LONG_PASS_SPEED = (skill_role_fw[player_role] + skill_pos[position]) / 2
-
-    from player.skill_15_shot_acc import skill_role_fw, skill_pos
-    SHOT_ACCURACY = (skill_role_fw[player_role] + skill_pos[position]) / 2
-
-    from player.skill_16_shot_power import skill_role_fw, skill_pos
-    SHOT_POWER = (skill_role_fw[player_role] + skill_pos[position]) / 2
-
-    from player.skill_17_shot_tech import skill_role_fw, skill_pos
-    SHOT_TECHNIQUE = (skill_role_fw[player_role] + skill_pos[position]) / 2
-
-    from player.skill_18_free_kick_acc import skill_role_fw, skill_pos
-    FREE_KICK_ACCURACY = (skill_role_fw[player_role] + skill_pos[position]) / 2
-
-    from player.skill_19_curling import skill_role_fw, skill_pos
-    CURLING = (skill_role_fw[player_role] + skill_pos[position]) / 2
-
-    from player.skill_20_header import skill_role_fw, skill_pos
-    HEADER = (skill_role_fw[player_role] + skill_pos[position]) / 2
-
-    from player.skill_21_jump import skill_role_fw, skill_pos
-    JUMP = (skill_role_fw[player_role] + skill_pos[position]) / 2
-
-    from player.skill_22_technique import skill_role_fw, skill_pos
-    TECHNIQUE = (skill_role_fw[player_role] + skill_pos[position]) / 2
-
-    from player.skill_23_aggression import skill_role_fw, skill_pos
-    AGGRESSION = (skill_role_fw[player_role] + skill_pos[position]) / 2
-
-    from player.skill_24_mentality import skill_role_fw, skill_pos
-    MENTALITY = (skill_role_fw[player_role] + skill_pos[position]) / 2
-
-    from player.skill_25_keeper_skills import skill_role_fw, skill_pos
-    KEEPER_SKILLS = (skill_role_fw[player_role] + skill_pos[position]) / 2
-
-    from player.skill_26_team_work import skill_role_fw, skill_pos
-    TEAM_WORK = (skill_role_fw[player_role] + skill_pos[position]) / 2
+    from player.skill_00_generator import skill
+    ATTACK = skill(player_role,0)
+    DEFENCE = skill(player_role,1)
+    BALANCE = skill(player_role,2) + str_fac
+    STAMINA = skill(player_role,3)
+    TOP_SPEED = skill(player_role,4)
+    ACCELERATION = skill(player_role,5)
+    RESPONSE = skill(player_role,6)
+    AGILITY = skill(player_role,7)
+    DRIBBLE_ACCURACY = skill(player_role,8)
+    DRIBBLE_SPEED = skill(player_role,9)
+    SHORT_PASS_ACCURACY = skill(player_role,10)
+    SHORT_PASS_SPEED = skill(player_role,11)
+    LONG_PASS_ACCURACY = skill(player_role,12)
+    LONG_PASS_SPEED = skill(player_role,13)
+    SHOT_ACCURACY = skill(player_role,14)
+    SHOT_POWER = skill(player_role,15)
+    SHOT_TECHNIQUE = skill(player_role,16)
+    FREE_KICK_ACCURACY = skill(player_role,17)
+    CURLING = skill(player_role,18)
+    HEADER = skill(player_role,19)
+    JUMP = skill(player_role,20)
+    TECHNIQUE = skill(player_role,21)
+    AGGRESSION = skill(player_role,22)
+    MENTALITY = skill(player_role,23)
+    KEEPER_SKILLS = skill(player_role,24)
+    TEAM_WORK = skill(player_role,25)
 
     from player.skill_00_generator import skills
     ATT,DEF,BAL,STA,TOP,ACC,RES,AGI,DAC,DSP,SPA,SPS,LPA,LPS,SAC,SPO,STE,FKA,CUR,HEA,JUM,TEC,AGG,MEN,KEE,TEA = skills(points,ATTACK,DEFENCE,BALANCE,STAMINA,
@@ -255,7 +203,7 @@ def fw():
         def choices(y,z):
             x = random.choices([0,1], weights=[y,z])[0]
             return x
-        roles = ["winger", "advanced playmaker", "inside forward", "trequatista", "wide target man", "raumdeuter", "inverted winger"]
+        roles = ["fw_w", "fw_ap", "fw_if", "fw_t", "fw_wtm", "fw_rmd", "fw_iw"]
         x = roles.index(player_role)
         GK =  [0, 0, 0, 0, 0, 0, 0]
         CWP = [0, 0, 0, 0, 0, 0, 0]

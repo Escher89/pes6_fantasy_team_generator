@@ -1,7 +1,6 @@
 import random
 
 def cmf():
-    position = "cmf"
     ### NAME AND NATIONALITY ###
     from player.nat_name import nat_name, shirt_name
 
@@ -67,67 +66,66 @@ def cmf():
     def role():
         from team import cmf, main_team_list
         from lists import types_cmf, types_dmf, types_amf, sub_roles_cmf, sub_roles_dmf, sub_roles_amf
-
         if len(main_team_list) > 0:
             ### anti-playmaker-overpopulation
-            if "deep lying playmaker" not in types_dmf or "regista" not in types_dmf:
-                if "deep lying playmaker" in types_cmf:
-                    types_cmf.remove("deep lying playmaker")
-                if "vertical playmaker" in types_cmf:
-                    types_cmf.remove("vertical playmaker")
-                if "advanced playmaker" in types_cmf:
-                    types_cmf.remove("advanced playmaker")
+            if "dmf_dlp" not in types_dmf or "dmf_rga" not in types_dmf or "dmf_rpm" not in types_dmf:
+                if "cmf_dlp" in types_cmf:
+                    types_cmf.remove("cmf_dlp")
+                if "cmf_rpm" in types_cmf:
+                    types_cmf.remove("cmf_rpm")
+                if "cmf_ap" in types_cmf:
+                    types_cmf.remove("cmf_ap")
             
             ### remove mezzala and carrilero for tactic with 1 or 2 cmfs
             if cmf == 1 or cmf == 2:
-                if "mezzala" in types_cmf:
-                    types_cmf.remove("mezzala")
-                if "carrilero" in types_cmf:
-                    types_cmf.remove("carrilero")
+                if "cmf_mez" in types_cmf:
+                    types_cmf.remove("cmf_mez")
+                if "cmf_car" in types_cmf:
+                    types_cmf.remove("cmf_car")
                 role = random.choice(types_cmf)
                 
             ### anti-playmaker-overpopulation    
             role = random.choice(types_cmf)
-            if role == "deep lying playmaker" or role == "vertical playmaker" or role == "advanced playmaker":
-                if "deep lying playmaker" in types_cmf:
-                    types_cmf.remove("deep lying playmaker")
-                if "vertical playmaker" in types_cmf:
-                    types_cmf.remove("vertical playmaker")
-                if "advanced playmaker" in types_cmf:
-                    types_cmf.remove("advanced playmaker")
+            if role == "cmf_dlp" or role == "cmf_rpm" or role == "cmf_ap":
+                if "cmf_dlp" in types_cmf:
+                    types_cmf.remove("cmf_dlp")
+                if "cmf_rpm" in types_cmf:
+                    types_cmf.remove("cmf_rpm")
+                if "cmf_ap" in types_cmf:
+                    types_cmf.remove("cmf_ap")
 
             ### variety
             if role in types_cmf:
                 types_cmf.remove(role)
-            if role in types_amf:
-                types_amf.remove(role)           
+            if role == "cmf_ap":
+                types_amf.remove("amf_ap")
             return role
         else:
             ### anti-playmaker-overpopulation
-            if "deep lying playmaker" not in sub_roles_dmf or "regista" not in sub_roles_dmf:
-                if "deep lying playmaker" in sub_roles_cmf:
-                    sub_roles_cmf.remove("deep lying playmaker")
-                if "vertical playmaker" in sub_roles_cmf:
-                    sub_roles_cmf.remove("vertical playmaker")
-                if "advanced playmaker" in sub_roles_cmf:
-                    sub_roles_cmf.remove("advanced playmaker")
+            if "dmf_dlp" not in sub_roles_dmf or "dmf_rga" not in sub_roles_dmf or "dmf_rpm" not in sub_roles_dmf:
+                if "cmf_dlp" in sub_roles_cmf:
+                    sub_roles_cmf.remove("cmf_dlp")
+                if "cmf_rpm" in sub_roles_cmf:
+                    sub_roles_cmf.remove("cmf_rpm")
+                if "cmf_ap" in sub_roles_cmf:
+                    sub_roles_cmf.remove("cmf_ap")
             
             role = random.choice(sub_roles_cmf)
             
             ### anti-playmaker-overpopulation    
-            if role == "deep lying playmaker" or role == "vertical playmaker" or role == "advanced playmaker":
-                if "deep lying playmaker" in sub_roles_cmf:
-                    sub_roles_cmf.remove("deep lying playmaker")
-                if "vertical playmaker" in sub_roles_cmf:
-                    sub_roles_cmf.remove("vertical playmaker")
-                if "advanced playmaker" in sub_roles_cmf:
-                    sub_roles_cmf.remove("advanced playmaker")
+            if role == "cmf_dlp" or role == "cmf_rpm" or role == "cmf_ap":
+                if "cmf_dlp" in sub_roles_cmf:
+                    sub_roles_cmf.remove("cmf_dlp")
+                if "cmf_rpm" in sub_roles_cmf:
+                    sub_roles_cmf.remove("cmf_rpm")
+                if "cmf_ap" in sub_roles_cmf:
+                    sub_roles_cmf.remove("cmf_ap")
             
             ### variety
             if role in sub_roles_cmf:
                 sub_roles_cmf.remove(role)
-            if role in types_amf:
-                sub_roles_amf.remove(role)
+            if role == "cmf_ap":
+                sub_roles_amf.remove("amf_ap")
             return role
     player_role = role()
         
@@ -159,83 +157,33 @@ def cmf():
     points = overall(AGE) 
 
     ### SKILLS ###
-    from player.skill_01_attack import skill_role_cmf, skill_pos
-    ATTACK = (skill_role_cmf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_02_defence import skill_role_cmf, skill_pos
-    DEFENCE = (skill_role_cmf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_03_balance import skill_role_cmf, skill_pos
-    BALANCE = (skill_role_cmf[player_role] + skill_pos[position]) / 2  + str_fac
-
-    from player.skill_04_stamina import skill_role_cmf, skill_pos
-    STAMINA = (skill_role_cmf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_05_top_speed import skill_role_cmf, skill_pos
-    TOP_SPEED = (skill_role_cmf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_06_acceleration import skill_role_cmf, skill_pos
-    ACCELERATION = (skill_role_cmf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_07_response import skill_role_cmf, skill_pos
-    RESPONSE = (skill_role_cmf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_08_agility import skill_role_cmf, skill_pos
-    AGILITY = (skill_role_cmf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_09_dribble_acc import skill_role_cmf, skill_pos
-    DRIBBLE_ACCURACY = (skill_role_cmf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_10_dribble_spd import skill_role_cmf, skill_pos
-    DRIBBLE_SPEED = (skill_role_cmf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_11_short_pass_acc import skill_role_cmf, skill_pos
-    SHORT_PASS_ACCURACY = (skill_role_cmf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_12_short_pass_spd import skill_role_cmf, skill_pos
-    SHORT_PASS_SPEED = (skill_role_cmf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_13_long_pass_acc import skill_role_cmf, skill_pos
-    LONG_PASS_ACCURACY = (skill_role_cmf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_14_long_pass_spd import skill_role_cmf, skill_pos
-    LONG_PASS_SPEED = (skill_role_cmf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_15_shot_acc import skill_role_cmf, skill_pos
-    SHOT_ACCURACY = (skill_role_cmf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_16_shot_power import skill_role_cmf, skill_pos
-    SHOT_POWER = (skill_role_cmf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_17_shot_tech import skill_role_cmf, skill_pos
-    SHOT_TECHNIQUE = (skill_role_cmf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_18_free_kick_acc import skill_role_cmf, skill_pos
-    FREE_KICK_ACCURACY = (skill_role_cmf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_19_curling import skill_role_cmf, skill_pos
-    CURLING = (skill_role_cmf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_20_header import skill_role_cmf, skill_pos
-    HEADER = (skill_role_cmf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_21_jump import skill_role_cmf, skill_pos
-    JUMP = (skill_role_cmf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_22_technique import skill_role_cmf, skill_pos
-    TECHNIQUE = (skill_role_cmf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_23_aggression import skill_role_cmf, skill_pos
-    AGGRESSION = (skill_role_cmf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_24_mentality import skill_role_cmf, skill_pos
-    MENTALITY = (skill_role_cmf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_25_keeper_skills import skill_role_cmf, skill_pos
-    KEEPER_SKILLS = (skill_role_cmf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_26_team_work import skill_role_cmf, skill_pos
-    TEAM_WORK = (skill_role_cmf[player_role] + skill_pos[position]) / 2
+    from player.skill_00_generator import skill
+    ATTACK = skill(player_role,0)
+    DEFENCE = skill(player_role,1)
+    BALANCE = skill(player_role,2) + str_fac
+    STAMINA = skill(player_role,3)
+    TOP_SPEED = skill(player_role,4)
+    ACCELERATION = skill(player_role,5)
+    RESPONSE = skill(player_role,6)
+    AGILITY = skill(player_role,7)
+    DRIBBLE_ACCURACY = skill(player_role,8)
+    DRIBBLE_SPEED = skill(player_role,9)
+    SHORT_PASS_ACCURACY = skill(player_role,10)
+    SHORT_PASS_SPEED = skill(player_role,11)
+    LONG_PASS_ACCURACY = skill(player_role,12)
+    LONG_PASS_SPEED = skill(player_role,13)
+    SHOT_ACCURACY = skill(player_role,14)
+    SHOT_POWER = skill(player_role,15)
+    SHOT_TECHNIQUE = skill(player_role,16)
+    FREE_KICK_ACCURACY = skill(player_role,17)
+    CURLING = skill(player_role,18)
+    HEADER = skill(player_role,19)
+    JUMP = skill(player_role,20)
+    TECHNIQUE = skill(player_role,21)
+    AGGRESSION = skill(player_role,22)
+    MENTALITY = skill(player_role,23)
+    KEEPER_SKILLS = skill(player_role,24)
+    TEAM_WORK = skill(player_role,25)
 
     from player.skill_00_generator import skills
     ATT,DEF,BAL,STA,TOP,ACC,RES,AGI,DAC,DSP,SPA,SPS,LPA,LPS,SAC,SPO,STE,FKA,CUR,HEA,JUM,TEC,AGG,MEN,KEE,TEA = skills(points,ATTACK,DEFENCE,BALANCE,STAMINA,
@@ -248,13 +196,12 @@ def cmf():
                                                                                                                     JUMP,TECHNIQUE,AGGRESSION,MENTALITY,
                                                                                                                     KEEPER_SKILLS,TEAM_WORK)
 
-    ### 2nd positions ###
+    ### 2nd positions ### ### REWORK ###
     def second_pos():
         def choices(y,z):
             x = random.choices([0,1], weights=[y,z])[0]
             return x
-        roles = ["central midfielder", "deep lying playmaker", "box to box midfielder", "advanced playmaker",
-                 "ball winning midfielder", "vertical playmaker", "mezzala", "carrilero"]
+        roles = ["cmf_cm", "cmf_bwm", "cmf_dlp", "cmf_bbm", "cmf_rpm", "cmf_mez", "cmf_car", "cmf_ap"]
         x = roles.index(player_role)
         GK =  [0, 0, 0, 0, 0, 0, 0, 0]
         CWP = [0, 0, choices(8,1), 0, 0, 0, 0, 0]

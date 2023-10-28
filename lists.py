@@ -8,25 +8,38 @@ nat_list = ["Austria","Belgium","Bulgaria","Croatia","Czech","Denmark","England"
 
 csv_list = []
 
-types_cb3 = ["center back", "ball playing center back", "wide center back", "wide center back", "no non-sense center back"]
-types_dmf = ["defensive midfielder","deep lying playmaker", "ball winning midfielder", "anchor man", "half back", "regista", "segundo volante"]
-types_wb = ["wing back", "complete wing back", "inverted wing back"]
-types_cmf = ["central midfielder", "deep lying playmaker", "box to box midfielder", "advanced playmaker", "ball winning midfielder", "vertical playmaker", "mezzala", "carrilero"]
-types_smf = ["wide midflieder", "winger", "defensive winger", "wide playmaker", "inverted winger"]
-types_amf = ["offensive midfielder", "advanced playmaker", "trequatista", "enganche", "shadow striker"]
-types_fw = ["winger","advanced playmaker", "inside forward", "trequatista", "wide target man", "raumdeuter", "inverted winger"]
-types_ss = ["deep lying forward", "pressing forward", "trequatista", "false nine"]
-types_cf = ["advanced forward", "target man", "poacher", "complete forward"]
+all_roles = ["gk_gk", "gk_sk",
+             "cwp_sw",
+             "cb_cb", "cb_bpd", "cb_wcb", "cb_ncb",
+             "sb_fb", "sb_wb", "sb_nfb", "sb_cwb", "sb_iwb",
+             "dmf_dm","dmf_dlp", "dmf_bwm", "dmf_a", "dmf_hb", "dmf_rpm", "dmf_rga", "dmf_vol",
+             "wb_wb", "wb_cwb", "wb_iwb",
+             "cmf_cm", "cmf_bwm", "cmf_dlp", "cmf_bbm", "cmf_rpm", "cmf_mez", "cmf_car", "cmf_ap",
+             "smf_wm", "smf_w", "smf_dw", "smf_wp", "smf_iw",
+             "amf_am", "amf_ap", "amf_t", "amf_eg", "amf_ss",
+             "fw_w", "fw_ap", "fw_if", "fw_t", "fw_wtm", "fw_rmd", "fw_iw",
+             "ss_dlf", "ss_pf", "ss_t", "ss_f9",
+             "cf_p", "cf_cf", "cf_af", "cf_tm"]
+
+types_cb3 = ["cb_cb", "cb_bpd", "cb_wcb", "cb_wcb", "cb_ncb"]
+types_dmf = ["dmf_dm","dmf_dlp", "dmf_bwm", "dmf_a", "dmf_hb", "dmf_rpm", "dmf_rga", "dmf_vol"]
+types_wb = ["wb_wb", "wb_cwb", "wb_iwb"]
+types_cmf = ["cmf_cm", "cmf_bwm", "cmf_dlp", "cmf_bbm", "cmf_rpm", "cmf_mez", "cmf_car", "cmf_ap"]
+types_smf = ["smf_wm", "smf_w", "smf_dw", "smf_wp", "smf_iw"]
+types_amf = ["amf_am", "amf_ap", "amf_t", "amf_eg", "amf_ss"]
+types_fw = ["fw_w","fw_ap", "fw_if", "fw_t", "fw_wtm", "fw_rmd", "fw_iw"]
+types_ss = ["ss_dlf", "ss_pf", "ss_t", "ss_f9"]
+types_cf = ["cf_p", "cf_cf", "cf_af", "cf_tm"]
 
 ### lists for subs ###
-sub_roles_dmf = ["defensive midfielder","deep lying playmaker", "ball winning midfielder", "anchor man", "half back", "regista", "segundo volante"]
-sub_roles_wb = ["wing back", "complete wing back", "inverted wing back"]
-sub_roles_cmf = ["central midfielder", "deep lying playmaker", "box to box midfielder", "advanced playmaker", "ball winning midfielder", "vertical playmaker", "mezzala", "carrilero"]
-sub_roles_smf = ["wide midflieder", "winger", "defensive winger", "wide playmaker", "inverted winger"]
-sub_roles_amf = ["offensive midfielder", "advanced playmaker", "trequatista", "enganche", "shadow striker"]
-sub_roles_fw = ["winger","advanced playmaker", "inside forward", "trequatista", "wide target man", "raumdeuter", "inverted winger"]
-sub_roles_ss = ["deep lying forward", "pressing forward", "trequatista", "false nine"]
-sub_roles_cf = ["advanced forward", "target man", "poacher", "complete forward", "advanced forward", "target man", "poacher", "complete forward"]
+sub_roles_dmf = ["dmf_dm","dmf_dlp", "dmf_bwm", "dmf_a", "dmf_hb", "dmf_rpm", "dmf_rga", "dmf_vol"]
+sub_roles_wb = ["wb_wb", "wb_cwb", "wb_iwb"]
+sub_roles_cmf = ["cmf_cm", "cmf_bwm", "cmf_dlp", "cmf_bbm", "cmf_rpm", "cmf_mez", "cmf_car", "cmf_ap"]
+sub_roles_smf = ["smf_wm", "smf_w", "smf_dw", "smf_wp", "smf_iw"]
+sub_roles_amf = ["amf_am", "amf_ap", "amf_t", "amf_eg", "amf_ss"]
+sub_roles_fw = ["fw_w","fw_ap", "fw_if", "fw_t", "fw_wtm", "fw_rmd", "fw_iw"]
+sub_roles_ss = ["ss_dlf", "ss_pf", "ss_t", "ss_f9"]
+sub_roles_cf = ["cf_p", "cf_cf", "cf_af", "cf_tm", "cf_p", "cf_cf", "cf_af", "cf_tm"]
 
 sub_sb_side_list = ["L", "R", "B"]
 sub_wb_side_list = ["L", "R", "B"]

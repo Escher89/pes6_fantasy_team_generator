@@ -1,7 +1,6 @@
 import random
 
 def cf():
-    position = "cf"
     ### NAME AND NATIONALITY ###
     from player.nat_name import nat_name, shirt_name
 
@@ -33,10 +32,10 @@ def cf():
     def role():
         from lists import types_cf, types_fw, sub_roles_cf
         from team import main_team_list
-        
+        "cf_p", "cf_cf", "cf_af", "cf_tm"
         if len(main_team_list) > 0:
-            if "wide target man" not in types_fw and "target man" in types_cf:
-                types_cf.remove("target man")
+            if "fw_wtm" not in types_fw and "cf_tm" in types_cf:
+                types_cf.remove("cf_tm")
             
             role = random.choice(types_cf)
 
@@ -57,19 +56,19 @@ def cf():
     ### HEIGHT AND WEIGHT ###
     from player.height_weight import height_weight
 
-    if player_role == "target man":
+    if player_role == "cf_tm":
         mu = 185
         sigma = 5
         height_min = 178
         height_max = 202
         bmi_mu = 23.5
-    elif player_role == "poacher":
+    elif player_role == "cf_p":
         mu = 178
         sigma = 5
         height_min = 160
         height_max = 188
         bmi_mu = 22.5
-    elif player_role != "target man" and player_role != "poacher":
+    elif player_role != "cf_tm" and player_role != "cf_p":
         mu = 182
         sigma = 5
         height_min = 174
@@ -98,83 +97,33 @@ def cf():
     points = overall(AGE) 
 
     ### SKILLS ###
-    from player.skill_01_attack import skill_role_cf, skill_pos
-    ATTACK = (skill_role_cf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_02_defence import skill_role_cf, skill_pos
-    DEFENCE = (skill_role_cf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_03_balance import skill_role_cf, skill_pos
-    BALANCE = (skill_role_cf[player_role] + skill_pos[position]) / 2  + str_fac
-
-    from player.skill_04_stamina import skill_role_cf, skill_pos
-    STAMINA = (skill_role_cf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_05_top_speed import skill_role_cf, skill_pos
-    TOP_SPEED = (skill_role_cf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_06_acceleration import skill_role_cf, skill_pos
-    ACCELERATION = (skill_role_cf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_07_response import skill_role_cf, skill_pos
-    RESPONSE = (skill_role_cf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_08_agility import skill_role_cf, skill_pos
-    AGILITY = (skill_role_cf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_09_dribble_acc import skill_role_cf, skill_pos
-    DRIBBLE_ACCURACY = (skill_role_cf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_10_dribble_spd import skill_role_cf, skill_pos
-    DRIBBLE_SPEED = (skill_role_cf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_11_short_pass_acc import skill_role_cf, skill_pos
-    SHORT_PASS_ACCURACY = (skill_role_cf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_12_short_pass_spd import skill_role_cf, skill_pos
-    SHORT_PASS_SPEED = (skill_role_cf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_13_long_pass_acc import skill_role_cf, skill_pos
-    LONG_PASS_ACCURACY = (skill_role_cf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_14_long_pass_spd import skill_role_cf, skill_pos
-    LONG_PASS_SPEED = (skill_role_cf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_15_shot_acc import skill_role_cf, skill_pos
-    SHOT_ACCURACY = (skill_role_cf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_16_shot_power import skill_role_cf, skill_pos
-    SHOT_POWER = (skill_role_cf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_17_shot_tech import skill_role_cf, skill_pos
-    SHOT_TECHNIQUE = (skill_role_cf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_18_free_kick_acc import skill_role_cf, skill_pos
-    FREE_KICK_ACCURACY = (skill_role_cf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_19_curling import skill_role_cf, skill_pos
-    CURLING = (skill_role_cf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_20_header import skill_role_cf, skill_pos
-    HEADER = (skill_role_cf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_21_jump import skill_role_cf, skill_pos
-    JUMP = (skill_role_cf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_22_technique import skill_role_cf, skill_pos
-    TECHNIQUE = (skill_role_cf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_23_aggression import skill_role_cf, skill_pos
-    AGGRESSION = (skill_role_cf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_24_mentality import skill_role_cf, skill_pos
-    MENTALITY = (skill_role_cf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_25_keeper_skills import skill_role_cf, skill_pos
-    KEEPER_SKILLS = (skill_role_cf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_26_team_work import skill_role_cf, skill_pos
-    TEAM_WORK = (skill_role_cf[player_role] + skill_pos[position]) / 2
+    from player.skill_00_generator import skill
+    ATTACK = skill(player_role,0)
+    DEFENCE = skill(player_role,1)
+    BALANCE = skill(player_role,2) + str_fac
+    STAMINA = skill(player_role,3)
+    TOP_SPEED = skill(player_role,4)
+    ACCELERATION = skill(player_role,5)
+    RESPONSE = skill(player_role,6)
+    AGILITY = skill(player_role,7)
+    DRIBBLE_ACCURACY = skill(player_role,8)
+    DRIBBLE_SPEED = skill(player_role,9)
+    SHORT_PASS_ACCURACY = skill(player_role,10)
+    SHORT_PASS_SPEED = skill(player_role,11)
+    LONG_PASS_ACCURACY = skill(player_role,12)
+    LONG_PASS_SPEED = skill(player_role,13)
+    SHOT_ACCURACY = skill(player_role,14)
+    SHOT_POWER = skill(player_role,15)
+    SHOT_TECHNIQUE = skill(player_role,16)
+    FREE_KICK_ACCURACY = skill(player_role,17)
+    CURLING = skill(player_role,18)
+    HEADER = skill(player_role,19)
+    JUMP = skill(player_role,20)
+    TECHNIQUE = skill(player_role,21)
+    AGGRESSION = skill(player_role,22)
+    MENTALITY = skill(player_role,23)
+    KEEPER_SKILLS = skill(player_role,24)
+    TEAM_WORK = skill(player_role,25)
 
     from player.skill_00_generator import skills
     ATT,DEF,BAL,STA,TOP,ACC,RES,AGI,DAC,DSP,SPA,SPS,LPA,LPS,SAC,SPO,STE,FKA,CUR,HEA,JUM,TEC,AGG,MEN,KEE,TEA = skills(points,ATTACK,DEFENCE,BALANCE,STAMINA,
@@ -192,7 +141,7 @@ def cf():
         def choices(y,z):
             x = random.choices([0,1], weights=[y,z])[0]
             return x
-        roles = ["advanced forward", "target man", "poacher", "complete forward"]
+        roles = ["cf_p", "cf_cf", "cf_af", "cf_tm"]
         x = roles.index(player_role)
         GK =  [0, 0, 0, 0]
         CWP = [0, 0, 0, 0]

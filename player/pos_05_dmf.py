@@ -1,7 +1,6 @@
 import random
 
 def dmf():
-    position = "dmf"
     ### NAME AND NATIONALITY ###
     from player.nat_name import nat_name, shirt_name
 
@@ -32,36 +31,40 @@ def dmf():
 
     def role():
         from team import dmf, defender, midfielder, main_team_list
-        from lists import types_dmf, types_cmf, types_amf, sub_roles_dmf, sub_roles_cmf, sub_roles_amf
+        from lists import types_dmf, types_cmf, sub_roles_dmf, sub_roles_cmf
         
         if len(main_team_list) > 0:
             if dmf == 1:
-                types_dmf.remove("regista")
-                types_dmf.remove("segundo volante")
-                types_dmf.remove("half back")
+                types_dmf.remove("dmf_rga")
+                types_dmf.remove("dmf_vol")
+                types_dmf.remove("dmf_hb")
+                types_dmf.remove("dmf_rpm")
                 role = random.choice(types_dmf)
             
             if dmf == 1 and (defender == 4 and midfielder == 3):
-                types_dmf.append("half back")
+                types_dmf.append("dmf_hb")
                 role = random.choice(types_dmf)
         
             if dmf == 2:
                 #types_dmf.remove("half back")
                 role = random.choice(types_dmf)
-                if  role == "deep lying playmaker" or role == "regista":
-                    types_dmf.remove("deep lying playmaker")
-                    types_dmf.remove("regista")
-                if  role == "anchor man" or role == "half back":
-                    types_dmf.remove("anchor man")
-                    types_dmf.remove("half back")
+                if  role == "dmf_dlp" or role == "dmf_rga" or role == "dmf_rpm":
+                    types_dmf.remove("dmf_dlp")
+                    types_dmf.remove("dmf_rga")
+                    types_dmf.remove("dmf_rpm")
+                if  role == "dmf_a" or role == "dmf_hb":
+                    types_dmf.remove("dmf_a")
+                    types_dmf.remove("dmf_hb")
             
             ### variety
             if role in types_dmf:
                 types_dmf.remove(role)
-            if role in types_cmf:    
-                types_cmf.remove(role)
-            if role in types_amf:
-                types_amf.remove(role)
+            if role == "dmf_dlp":
+                types_cmf.remove("cmf_dlp")
+            if role == "dmf_bwm":
+                types_cmf.remove("cmf_bwm")
+            if role == "dmf_rpm":
+                types_cmf.remove("cmf_rpm")
 
             return role
         else:
@@ -69,10 +72,12 @@ def dmf():
             ### variety
             if role in sub_roles_dmf:
                 sub_roles_dmf.remove(role)
-            if role in sub_roles_cmf:    
-                sub_roles_cmf.remove(role)
-            if role in sub_roles_amf:
-                sub_roles_amf.remove(role)
+            if role == "dmf_dlp":
+                sub_roles_cmf.remove("cmf_dlp")
+            if role == "dmf_bwm":
+                sub_roles_cmf.remove("cmf_bwm")
+            if role == "dmf_rpm":
+                sub_roles_cmf.remove("cmf_rpm")
 
             return role
     player_role = role()
@@ -83,7 +88,7 @@ def dmf():
     ### HEIGHT AND WEIGHT ###
     from player.height_weight import height_weight
 
-    if player_role == "half back":
+    if player_role == "dmf_hb":
         mu = 185
         sigma = 5
         height_min = 175
@@ -112,83 +117,33 @@ def dmf():
     points = overall(AGE) 
 
     ### SKILLS ###
-    from player.skill_01_attack import skill_role_dmf, skill_pos
-    ATTACK = (skill_role_dmf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_02_defence import skill_role_dmf, skill_pos
-    DEFENCE = (skill_role_dmf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_03_balance import skill_role_dmf, skill_pos
-    BALANCE = (skill_role_dmf[player_role] + skill_pos[position]) / 2  + str_fac
-
-    from player.skill_04_stamina import skill_role_dmf, skill_pos
-    STAMINA = (skill_role_dmf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_05_top_speed import skill_role_dmf, skill_pos
-    TOP_SPEED = (skill_role_dmf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_06_acceleration import skill_role_dmf, skill_pos
-    ACCELERATION = (skill_role_dmf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_07_response import skill_role_dmf, skill_pos
-    RESPONSE = (skill_role_dmf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_08_agility import skill_role_dmf, skill_pos
-    AGILITY = (skill_role_dmf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_09_dribble_acc import skill_role_dmf, skill_pos
-    DRIBBLE_ACCURACY = (skill_role_dmf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_10_dribble_spd import skill_role_dmf, skill_pos
-    DRIBBLE_SPEED = (skill_role_dmf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_11_short_pass_acc import skill_role_dmf, skill_pos
-    SHORT_PASS_ACCURACY = (skill_role_dmf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_12_short_pass_spd import skill_role_dmf, skill_pos
-    SHORT_PASS_SPEED = (skill_role_dmf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_13_long_pass_acc import skill_role_dmf, skill_pos
-    LONG_PASS_ACCURACY = (skill_role_dmf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_14_long_pass_spd import skill_role_dmf, skill_pos
-    LONG_PASS_SPEED = (skill_role_dmf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_15_shot_acc import skill_role_dmf, skill_pos
-    SHOT_ACCURACY = (skill_role_dmf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_16_shot_power import skill_role_dmf, skill_pos
-    SHOT_POWER = (skill_role_dmf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_17_shot_tech import skill_role_dmf, skill_pos
-    SHOT_TECHNIQUE = (skill_role_dmf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_18_free_kick_acc import skill_role_dmf, skill_pos
-    FREE_KICK_ACCURACY = (skill_role_dmf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_19_curling import skill_role_dmf, skill_pos
-    CURLING = (skill_role_dmf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_20_header import skill_role_dmf, skill_pos
-    HEADER = (skill_role_dmf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_21_jump import skill_role_dmf, skill_pos
-    JUMP = (skill_role_dmf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_22_technique import skill_role_dmf, skill_pos
-    TECHNIQUE = (skill_role_dmf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_23_aggression import skill_role_dmf, skill_pos
-    AGGRESSION = (skill_role_dmf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_24_mentality import skill_role_dmf, skill_pos
-    MENTALITY = (skill_role_dmf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_25_keeper_skills import skill_role_dmf, skill_pos
-    KEEPER_SKILLS = (skill_role_dmf[player_role] + skill_pos[position]) / 2
-
-    from player.skill_26_team_work import skill_role_dmf, skill_pos
-    TEAM_WORK = (skill_role_dmf[player_role] + skill_pos[position]) / 2
+    from player.skill_00_generator import skill
+    ATTACK = skill(player_role,0)
+    DEFENCE = skill(player_role,1)
+    BALANCE = skill(player_role,2) + str_fac
+    STAMINA = skill(player_role,3)
+    TOP_SPEED = skill(player_role,4)
+    ACCELERATION = skill(player_role,5)
+    RESPONSE = skill(player_role,6)
+    AGILITY = skill(player_role,7)
+    DRIBBLE_ACCURACY = skill(player_role,8)
+    DRIBBLE_SPEED = skill(player_role,9)
+    SHORT_PASS_ACCURACY = skill(player_role,10)
+    SHORT_PASS_SPEED = skill(player_role,11)
+    LONG_PASS_ACCURACY = skill(player_role,12)
+    LONG_PASS_SPEED = skill(player_role,13)
+    SHOT_ACCURACY = skill(player_role,14)
+    SHOT_POWER = skill(player_role,15)
+    SHOT_TECHNIQUE = skill(player_role,16)
+    FREE_KICK_ACCURACY = skill(player_role,17)
+    CURLING = skill(player_role,18)
+    HEADER = skill(player_role,19)
+    JUMP = skill(player_role,20)
+    TECHNIQUE = skill(player_role,21)
+    AGGRESSION = skill(player_role,22)
+    MENTALITY = skill(player_role,23)
+    KEEPER_SKILLS = skill(player_role,24)
+    TEAM_WORK = skill(player_role,25)
 
     from player.skill_00_generator import skills
     ATT,DEF,BAL,STA,TOP,ACC,RES,AGI,DAC,DSP,SPA,SPS,LPA,LPS,SAC,SPO,STE,FKA,CUR,HEA,JUM,TEC,AGG,MEN,KEE,TEA = skills(points,ATTACK,DEFENCE,BALANCE,STAMINA,
@@ -201,25 +156,25 @@ def dmf():
                                                                                                                     JUMP,TECHNIQUE,AGGRESSION,MENTALITY,
                                                                                                                     KEEPER_SKILLS,TEAM_WORK)
 
-    ### 2nd positions ###
+    ### 2nd positions ### ### REWORK ###
     def second_pos():
         def choices(y,z):
             x = random.choices([0,1], weights=[y,z])[0]
             return x
-        roles = ["defensive midfielder","deep lying playmaker", "ball winning midfielder", "anchor man", "half back", "regista", "segundo volante"]
+        roles = ["dmf_dm","dmf_dlp", "dmf_bwm", "dmf_a", "dmf_hb", "dmf_rpm", "dmf_rga", "dmf_vol"]
         x = roles.index(player_role)
-        GK = [0, 0, 0, 0, 0, 0, 0]
-        CWP = [choices(2,1), choices(4,1), choices(2,1), 0, 0, 0, 0]
-        CB = [choices(3,1), 0, choices(2,1), choices(4,1), choices(1,2), 0, 0]
-        SB = [0, 0, 0, 0, 0, 0, 0]
-        DMF = [1, 1, 1, 1, 1, 1, 1]
-        WB = [0, 0, 0, 0, 0, 0, 0]
-        CMF = [choices(2,1), choices(3,2), choices(2,1), 0, 0, choices(1,1), choices(1,2)]
-        SMF = [0, 0, 0, 0, 0, 0, 0]
-        AMF = [0, 0, 0, 0, 0, 0, choices(2,1)]
-        FW = [0, 0, 0, 0, 0, 0, 0]
-        SS = [0, 0, 0, 0, 0, 0, 0]
-        CF = [0, 0, 0, 0, 0, 0, 0]
+        GK = [0, 0, 0, 0, 0, 0, 0, 0]
+        CWP = [choices(2,1), choices(4,1), choices(2,1), 0, 0, 0, 0, 0]
+        CB = [choices(3,1), 0, choices(2,1), choices(4,1), choices(1,2), 0, 0, 0]
+        SB = [0, 0, 0, 0, 0, 0, 0, 0]
+        DMF = [1, 1, 1, 1, 1, 1, 1, 1]
+        WB = [0, 0, 0, 0, 0, 0, 0, 0]
+        CMF = [choices(2,1), choices(3,2), choices(2,1), 0, 0, choices(1,1), choices(1,2), choices(1,1)]
+        SMF = [0, 0, 0, 0, 0, 0, 0, 0]
+        AMF = [0, 0, 0, 0, 0, 0, choices(2,1), choices(1,1)]
+        FW = [0, 0, 0, 0, 0, 0, 0, 0]
+        SS = [0, 0, 0, 0, 0, 0, 0, 0]
+        CF = [0, 0, 0, 0, 0, 0, 0, 0]
         return GK[x], CWP[x], CB[x], SB[x], DMF[x], WB[x], CMF[x], SMF[x], AMF[x], FW[x], SS[x], CF[x]
     
     GK, CWP, CB, SB, DMF, WB, CMF, SMF, AMF, FW, SS, CF = second_pos()
